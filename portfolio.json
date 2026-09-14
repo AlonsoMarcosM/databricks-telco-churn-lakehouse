@@ -107,22 +107,6 @@
       }
     },
     {
-      "type": "experiment",
-      "path": "documentacion/assets/hito3_mlflow_experiment_aucpr.png",
-      "label": {
-        "es": "Experimento MLflow",
-        "en": "MLflow experiment"
-      }
-    },
-    {
-      "type": "model-governance",
-      "path": "documentacion/assets/hito3_unity_catalog_model_aliases.png",
-      "label": {
-        "es": "Aliases de modelo en Unity Catalog",
-        "en": "Unity Catalog model aliases"
-      }
-    },
-    {
       "type": "monitoring",
       "path": "documentacion/assets/hito4_lakehouse_monitor_dashboard.png",
       "label": {
