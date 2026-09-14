@@ -133,8 +133,6 @@
   ],
   "assets": [
     "documentacion/assets/hito2_pipeline_medallion_dag.png",
-    "documentacion/assets/hito3_mlflow_experiment_aucpr.png",
-    "documentacion/assets/hito3_unity_catalog_model_aliases.png",
     "documentacion/assets/hito4_lakehouse_monitor_dashboard.png"
   ],
   "limitations": {
