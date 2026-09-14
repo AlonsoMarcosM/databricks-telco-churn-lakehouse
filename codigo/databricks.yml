@@ -1,5 +1,5 @@
 bundle:
-  name: trabajo-bigdata
+  name: databricks-telco-churn-lakehouse
   databricks_cli_version: ">=0.230.0"
 
 include:
@@ -17,19 +17,45 @@ sync:
 
 variables:
   uc_catalog:
-    description: "Unity Catalog catalog where the pipeline publishes tables"
+    description: Unity Catalog catalog where the pipeline publishes tables
     default: workspace
   uc_schema:
-    description: "Unity Catalog schema where the pipeline publishes tables"
-    default: telco_churn
+    description: Isolated schema for the selected target
+    default: telco_churn_development
   landing_volume_path:
-    description: "Volume root path with generated input data"
-    default: /Volumes/workspace/telco_churn/landing_zone
+    description: Volume root path with generated synthetic input data
+    default: /Volumes/workspace/telco_churn_development/landing_zone
+  pipeline_development:
+    description: Enables Databricks pipeline development mode
+    default: true
 
 targets:
-  dev:
+  development:
     mode: development
     default: true
     workspace:
-      host: https://dbc-5ae029e2-ed3d.cloud.databricks.com
       root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      uc_catalog: workspace
+      uc_schema: telco_churn_development
+      landing_volume_path: /Volumes/workspace/telco_churn_development/landing_zone
+      pipeline_development: true
+
+  staging-simulation:
+    mode: production
+    workspace:
+      root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      uc_catalog: workspace
+      uc_schema: telco_churn_staging_simulation
+      landing_volume_path: /Volumes/workspace/telco_churn_staging_simulation/landing_zone
+      pipeline_development: false
+  production-simulation:
+    mode: production
+    workspace:
+      root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      uc_catalog: workspace
+      uc_schema: telco_churn_production_simulation
+      landing_volume_path: /Volumes/workspace/telco_churn_production_simulation/landing_zone
+      pipeline_development: false

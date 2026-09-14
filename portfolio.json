@@ -1,19 +1,166 @@
 {
-  "schema_version": 1,
-  "repository": "AlonsoMarcosM/Trabajo-DESARROLLO-Y-DESPLIEGUE-DE-SOLUCIONES-BIG-DATA",
-  "repository_url": "https://github.com/AlonsoMarcosM/Trabajo-DESARROLLO-Y-DESPLIEGUE-DE-SOLUCIONES-BIG-DATA",
-  "title": {"es": "Telco Churn Big Data y MLOps", "en": "Telco Churn Big Data and MLOps"},
-  "summary": {
-    "es": "Pipeline Medallion y ciclo MLOps completo sobre Databricks Lakehouse.",
-    "en": "End-to-end Medallion and MLOps lifecycle on Databricks Lakehouse."
+  "schema_version": 2,
+  "repository": "AlonsoMarcosM/databricks-telco-churn-lakehouse",
+  "repository_url": "https://github.com/AlonsoMarcosM/databricks-telco-churn-lakehouse",
+  "slug": "telco-churn-mlops-databricks",
+  "title": {
+    "es": "Lakehouse y MLOps de churn telco",
+    "en": "Telco churn Lakehouse and MLOps"
   },
-  "technologies": ["Databricks", "PySpark", "Delta Lake", "MLflow", "Unity Catalog"],
-  "deployment": {
-    "type": "documentation",
-    "provider": "github-pages",
-    "mode": "static-evidence",
-    "source_branch": "main",
-    "status": "live",
-    "url": "https://alonsomarcosm.github.io/Trabajo-DESARROLLO-Y-DESPLIEGUE-DE-SOLUCIONES-BIG-DATA/"
-  }
+  "lifecycle": "academic-delivered",
+  "classification": "applied-academic-project",
+  "problem": {
+    "es": "Construir un ciclo reproducible de datos y ML para anticipar la fuga de clientes sin ocultar la naturaleza sintética del conjunto de datos.",
+    "en": "Build a reproducible data and ML lifecycle for predicting customer churn while making the synthetic nature of the dataset explicit."
+  },
+  "architecture": {
+    "es": "Databricks Lakehouse con ingesta incremental, arquitectura Medallion sobre Delta Lake, feature engineering temporal, MLflow, Unity Catalog e inferencia batch monitorizada.",
+    "en": "Databricks Lakehouse with incremental ingestion, a Delta Lake Medallion architecture, temporal feature engineering, MLflow, Unity Catalog and monitored batch inference."
+  },
+  "dataFlow": {
+    "es": "Datos sintéticos → Auto Loader → Bronze/Silver/Gold → dataset point-in-time → entrenamiento y registro → inferencia y monitorización simuladas.",
+    "en": "Synthetic data → Auto Loader → Bronze/Silver/Gold → point-in-time dataset → training and registry → simulated inference and monitoring."
+  },
+  "stack": [
+    "Databricks",
+    "PySpark",
+    "Delta Lake",
+    "Auto Loader",
+    "Databricks Asset Bundles",
+    "MLflow",
+    "Unity Catalog",
+    "Lakehouse Monitoring"
+  ],
+  "team": [
+    {
+      "name": "Alonso Marcos Muñoz",
+      "role": {
+        "es": "Coautor end-to-end",
+        "en": "End-to-end co-author"
+      }
+    },
+    {
+      "name": "Jose Barros",
+      "role": {
+        "es": "Coautor",
+        "en": "Co-author"
+      }
+    }
+  ],
+  "ownership": {
+    "es": [
+      "Coimplementación end-to-end confirmada por Alonso el 2026-09-14",
+      "Experimento MLflow, job de ML de tres tareas y ejecución de simulación asociados a Alonso",
+      "Trabajo compartido en pipeline Medallion, ciclo de modelo y validación diaria"
+    ],
+    "en": [
+      "End-to-end co-implementation confirmed by Alonso on 2026-09-14",
+      "MLflow experiment, three-task ML job and simulation run associated with Alonso",
+      "Shared work across the Medallion pipeline, model lifecycle and daily validation"
+    ]
+  },
+  "verifiedMetrics": [
+    {
+      "label": {
+        "es": "Filas de entrenamiento",
+        "en": "Training rows"
+      },
+      "value": "16,316,445",
+      "evidence": "README.md#resultados-evidenciados",
+      "source_type": "execution-evidence"
+    },
+    {
+      "label": {
+        "es": "Clientes distintos",
+        "en": "Distinct customers"
+      },
+      "value": "2,042,162",
+      "evidence": "README.md#resultados-evidenciados",
+      "source_type": "execution-evidence"
+    },
+    {
+      "label": {
+        "es": "Variables del modelo",
+        "en": "Model features"
+      },
+      "value": "33",
+      "evidence": "README.md#resultados-evidenciados",
+      "source_type": "execution-evidence"
+    },
+    {
+      "label": {
+        "es": "Ventana de entrenamiento",
+        "en": "Training window"
+      },
+      "value": "2023-07 → 2024-12",
+      "evidence": "README.md#resultados-evidenciados",
+      "source_type": "execution-evidence"
+    }
+  ],
+  "evidence": [
+    {
+      "type": "architecture",
+      "path": "documentacion/assets/hito2_pipeline_medallion_dag.png",
+      "label": {
+        "es": "DAG Medallion ejecutado",
+        "en": "Executed Medallion DAG"
+      }
+    },
+    {
+      "type": "experiment",
+      "path": "documentacion/assets/hito3_mlflow_experiment_aucpr.png",
+      "label": {
+        "es": "Experimento MLflow",
+        "en": "MLflow experiment"
+      }
+    },
+    {
+      "type": "model-governance",
+      "path": "documentacion/assets/hito3_unity_catalog_model_aliases.png",
+      "label": {
+        "es": "Aliases de modelo en Unity Catalog",
+        "en": "Unity Catalog model aliases"
+      }
+    },
+    {
+      "type": "monitoring",
+      "path": "documentacion/assets/hito4_lakehouse_monitor_dashboard.png",
+      "label": {
+        "es": "Monitor de Lakehouse",
+        "en": "Lakehouse monitor"
+      }
+    }
+  ],
+  "assets": [
+    "documentacion/assets/hito2_pipeline_medallion_dag.png",
+    "documentacion/assets/hito3_mlflow_experiment_aucpr.png",
+    "documentacion/assets/hito3_unity_catalog_model_aliases.png",
+    "documentacion/assets/hito4_lakehouse_monitor_dashboard.png"
+  ],
+  "limitations": {
+    "es": [
+      "Los datos son sintéticos y el escenario denominado producción es una simulación académica",
+      "La validación y el despliegue autenticados requieren un workspace Databricks activo",
+      "La autoría es compartida y se mantiene la atribución de ambos coautores"
+    ],
+    "en": [
+      "The data is synthetic and the production-labelled scenario is an academic simulation",
+      "Authenticated validation and deployment require an active Databricks workspace",
+      "Authorship is shared and both co-authors remain credited"
+    ]
+  },
+  "links": [
+    {
+      "type": "technical_docs",
+      "url": "https://alonsomarcosm.github.io/databricks-telco-churn-lakehouse/"
+    },
+    {
+      "type": "case_study",
+      "url": "https://alonsomarcosm.github.io/es/projects/telco-churn-mlops-databricks/"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/AlonsoMarcosM/databricks-telco-churn-lakehouse"
+    }
+  ]
 }

@@ -1,10 +1,21 @@
-# Telco Churn Big Data & MLOps Platform
+# Lakehouse y MLOps de churn telco
 
-> **Despliegue público:** [Abrir despliegue](https://alonsomarcosm.github.io/Trabajo-DESARROLLO-Y-DESPLIEGUE-DE-SOLUCIONES-BIG-DATA/)
+> **Documentación técnica:** https://alonsomarcosm.github.io/databricks-telco-churn-lakehouse/
+>
+> **Caso de estudio:** https://alonsomarcosm.github.io/es/projects/telco-churn-mlops-databricks/
 
-Proyecto académico-profesional de **Big Data, Data Engineering y MLOps** desarrollado sobre **Databricks Lakehouse** para predecir la fuga de clientes en una compañía de telecomunicaciones.
+Proyecto académico aplicado de **Big Data, Data Engineering y MLOps** desarrollado
+sobre **Databricks Lakehouse** para predecir la fuga de clientes en una compañía
+de telecomunicaciones a partir de datos sintéticos.
+
+La autoría es compartida por Alonso Marcos Muñoz y Jose Barros. Alonso participa
+como coautor end-to-end, con trabajo verificable en el pipeline Medallion, el
+experimento MLflow, el job de ML de tres tareas y la ejecución de simulación.
 
 El objetivo no es únicamente entrenar un modelo de machine learning, sino construir un flujo completo de datos y ML: generación de datos, ingesta, arquitectura Medallion, calidad del dato, feature engineering, entrenamiento, registro de modelo, inferencia batch, enriquecimiento con etiquetas reales, monitorización y alertas.
+
+> **Estado del ciclo:** cualquier referencia a producción describe una simulación
+> académica. No representa un sistema empresarial activo ni datos reales de clientes.
 
 ---
 

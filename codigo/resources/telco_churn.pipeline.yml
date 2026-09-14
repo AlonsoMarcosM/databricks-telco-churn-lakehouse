@@ -3,16 +3,16 @@ resources:
     telco_churn:
       # Hito 3 se ejecuta mediante el job telco_churn_ml_orchestration.
       # Este recurso queda limitado al pipeline declarativo Medallion.
-      name: "Telco Churn - Hito 2 Medallion ETL"
+      name: "Telco Churn - ${bundle.target} - Medallion ETL"
       catalog: ${var.uc_catalog}
       schema: ${var.uc_schema}
       serverless: true
-      development: true
+      development: ${var.pipeline_development}
       continuous: false
       configuration:
         landing_volume_path: ${var.landing_volume_path}
         project_name: "Telco Churn"
-        project_stage: "Hito 2"
+        project_stage: "${bundle.target}"
         project_owner_team: "Alonso Marcos y Jose Barros"
         bundle.sourcePath: ${workspace.file_path}
       libraries:

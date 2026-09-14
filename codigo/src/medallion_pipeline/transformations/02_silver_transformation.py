@@ -27,6 +27,7 @@ from src.medallion_pipeline.rules.customers import (
     get_label_rules,
     get_interaction_rules,
 )
+from src.medallion_pipeline.quality import build_quarantine_expression
 
 
 # ---------------------------------------------------------------------------
@@ -40,7 +41,7 @@ cust_quarantine_flow = "flow_quarantine_customers"
 cust_history_table = "silver_customers_history"
 
 cust_rules = get_customer_rules()
-cust_expr = "NOT (" + " AND ".join(cust_rules.values()) + ")"
+cust_expr = build_quarantine_expression(cust_rules)
 
 dp.create_streaming_table(name=cust_quarantine_table)
 
@@ -110,7 +111,7 @@ usage_clean_view = "vw_clean_usage"
 usage_quarantine_flow = "flow_quarantine_usage"
 
 usage_rules = get_usage_rules()
-usage_expr = "NOT (" + " AND ".join(usage_rules.values()) + ")"
+usage_expr = build_quarantine_expression(usage_rules)
 
 dp.create_streaming_table(name=usage_quarantine_table)
 
@@ -157,7 +158,7 @@ labels_clean_view = "vw_clean_labels"
 labels_quarantine_flow = "flow_quarantine_labels"
 
 labels_rules = get_label_rules()
-labels_expr = "NOT (" + " AND ".join(labels_rules.values()) + ")"
+labels_expr = build_quarantine_expression(labels_rules)
 
 dp.create_streaming_table(name=labels_quarantine_table)
 
@@ -205,7 +206,7 @@ interactions_quarantine_flow = "flow_quarantine_interactions"
 interactions_clean_table = "silver_interactions_clean"
 
 interactions_rules = get_interaction_rules()
-interactions_expr = "NOT (" + " AND ".join(interactions_rules.values()) + ")"
+interactions_expr = build_quarantine_expression(interactions_rules)
 
 dp.create_streaming_table(name=interactions_quarantine_table)
 dp.create_streaming_table(name=interactions_clean_table)
